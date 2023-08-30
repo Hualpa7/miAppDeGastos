@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">  no se para que va todavia pero lo comento por las dudas-->
+    <title >Mi Economia</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!--Importo la direccion web donde estan almacenados los iconos de materialize CSS para el boton de ENVIAR -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> <!--se enlaza a lapagina web de materialize css para cambiar el estilo de mi pagina-->
+                                                                                                                    <!--CSS Grid de grillas-->
+    <link rel="stylesheet" href="resources/css/styles.css"> <!--Con esta linea enlazamos el HTML con el CSS-->
+    
+</head>
+
+<body>
+   <div class="row">
+      <div class="col l7 s4" >
+    <h1 id="title">Mi Economia</h1>                                           <!--TITULO de la pagina-->
+      </div>
+      <div class="col l5 s5">
+    <img src="https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-donation-icon-from-business-bicolor-set-commercial-transaction-treasure-vector-png-image_19458516.png"
+    width="140"
+    height="90" id="imageTitle"/>
+      </div>
+   </div>
+
+    <div class="row">                                   <!--Tag div para dividir en 12 columnas la pagina con materialize CSS-->
+      
+        <div class="col l5 offset-l1 s12">                           <!--Tag div para seprar 5 columnas con materialize CSS-->
+         <div class="col l12 offset-s2"><span class="historial">Historial de Transacciones</span></div>
+           <div class="TableFormat">                    <!--Otro div para crear la tabla en transaccion de la pagina-->
+      <table id="transactionTable" class="highlight">            <!--Con table creo las tablas y le agrego un ID para poder obtener luego una referencia a la tabla en el Script-->
+         
+           <tr>                                <!--Con tr creo una fila y con th creo las columnas de la tabla-->
+            <th>                               <!--t = table h = header, es decir que th es la cabecera de la tabla-->
+               Tipo
+            </th>
+            <th>
+               Descripcion
+            </th>
+            <th>
+               Monto
+            </th>
+            <th>
+               Categoria
+            </th>
+            <th>
+               Eliminar
+            </th>
+           </tr>
+           
+      </table>
+             </div>
+        </div>                                                       <!--l5 corresponde a pantallas de pc (>992px) mientras que s12 es para moviles (<=600px)-->
+
+          <div class="col l5 s12">                        <!--Tag div para seprar 5 columnas con materialize CSS-->
+            <div class="col s8 offset-s2">                  
+          <form id="transactionForm">                                                         <!--Creamos nuestro formulario-->
+         <div class="col l12 s12" >                                  <!--Se le asigna una clase a todos los div del formulario para luego modificar con css-->
+            <div>
+            <span>Tipo de Transacción</span> 
+            </div>
+            <!--
+            <input required id= "income" name="transactionType" type="radio" value="Ingreso">        //  Input para ingresar tipo,le asigno un Id para luego asociarlo con su label
+            <label for = "income">Ingreso</label>                                                    //    Es una etiqueta del tipo label que tiene asociado un input gracias al "for"
+            <input required id= "discharge" name="transactionType" type="radio" value="Egreso">      //   Ademas dividimos cada categoria con "div" para serpararlos en grupos
+            <label for = "discharge">Egreso</label>                                                  // Usamos el type="radio" para que el formulario sea un circulo a marcar
+                                                                                                     //  Se le agrega demas un value a cada input para que el valor por defecto de radio no sea "on"
+            COMENTAMOS TODO LO ANTERIOR, YA QUE AHORA AGREGAMOS CON MATERIALIZE CSS DOS NUEVAS ETIQUETAS PARA LOS BOTONES DE INGRESO Y EGRESO A CONTINUACION-->
+             
+               <div class="col l5 s5">
+            <p> <!--BOTON DE INGRESO-->
+               
+               <label>
+                 <input class="with-gap" name="transactionType" type="radio" checked value="Ingreso" />
+                 <span>Ingreso<i class="material-icons right">add_box</i></span>
+               </label>
+            </p>
+               </div>
+               <div class="col l5 s5" >
+            <p> <!--BOTON DE EGRESO-->
+                  <label>
+                    <input class="with-gap" name="transactionType" type="radio"  value="Egreso"/>
+                    <span>Egreso <i class="material-icons right">indeterminate_check_box</i></span>
+                  </label>
+           </p>  
+               </div>
+                                                                                     
+         </div>
+         <div class="input-field col l12 s12">
+            <label for = "transactionDescription">Descripcion</label>            <!--Idem para los demas-->
+            <input required id= "transactionDescription" name="transactionDescription" type="text">   <!--Name sirve para enviar los formularios al servidor-->
+         </div>                                                                  <!--Id solo sirve en nuestro DOM y sirve para usarlos en css y aplicarle estilos a las etiquetas-->
+         <div  class="input-field col l12 s12">                                           <!--Name sirve en el cliente y servidor y Id sirve solo del lado cliente-->
+            <label for = "transactionAmount">Monto</label> 
+            <input required min="0" id= "transactionAmount" name="transactionAmount" type="number" >  <!--NOTA: Required = el campo debe ser obligatorio completar-->
+         </div>                                                                         <!-- min y max = minimo y maximo al momento de agregar un numero-->
+                                                                                       <!--Los anteriores van en la etiqueta de input--> 
+
+<!--EN descripcion y monto cambie la clase "Clase formulario por "input-field col s6" para el estilo de materialize CSS-->
+         
+         <div class="ClaseFormulario" >                                                                                                                            
+            <label for = "transactionCategory">Categoria</label> 
+            <select class="browser-default" id= "transactionCategory" name="transactionCategory">  <!--Con el tag select, lo que hacemos es agregarle un selector a nuestro formulario-->
+                                                                                    <!--Ademas le agrego la class "browser-default" que roviene de materialize CSS para cambiarle el estilo-->
+                      <option value="Alquiler">Alquiler</option>                    <!--Cada opcion del selector, la agregamos con el tag option-->
+                       <option value="Comida">Comida</option>                        <!--Les doy un valor a cada uno, solo como buena practica-->
+                       <option value="Higiene">Higiene</option>
+                       <option value="Ganancias">Ganancias</option>
+                       <option value="Diversion">Diversion</option>
+                       <option value="Varios">Varios</option>
+            </select>
+       
+         </div>
+         <div class="buttonAdd">
+            <div class="ClaseFormulario">
+           <button class="btn waves-effect waves-light" id="botonDeEnvio">    <!--aqui le doy un ID al boton para luego modificarlo en css-->
+            Añadir<i class="material-icons right">send</i></button>            <!--Con la class "btn waves-effect waves-light" ya no necesitamos el id para modificaro en CSS
+                                                                                 Ya que lo hacemos directmaente con materialize CSS con dicha clase y admeas con 
+                                                                             "material-icons right" podemos agregarle un icono que debemos importar la direccion href en el head -->
+           </div>
+         </div>
+         </div>
+           </form> 
+            </div>
+           
+
+    </div>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  <!--enlace a codigo Js correspondiente a materialize css-->   
+ <script src="resources/Js/scripts.js"></script> <!--Con esto enlazamos este HTML con su respectivo JavaScript-->
+
+</body>
+
+</html>
