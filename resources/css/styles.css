@@ -1,56 +1,37 @@
 td,
 th {
    text-align: center;
-   /*para alinear al centro todos los elementos de la tabla*/
    padding: 10px;
-   /*para expandir las tablas*/
    border: solid red 1px;
-   /*Aqui se le agrega a cada "dato y a cada encabezado" de la tabla un borde color rojo de 1px de tamanio*/
 }
 
 .TableFormat table {
-   /*aqui queremos centrar la tabla no el div, por eso agregamos table luego de la clase*/
    margin: 10px auto;
-   /*para centrar la tabla 10px vertical y auto en horizontal*/
 }
 
 h1 {
    text-align: center;
-   /*para alinear los titulos h1*/
    margin: 1rem 0 1.68rem 0;
-   /*para agregar margen*/
 }
 
 form {
    text-align: center;
-   /*para alinear el formulario*/
 }
-
-/*.ClaseFormulario{             las clases se ingresan por medio de "."
-    background-color: wheat;    para pintar el fondo de cada div del fomrulario
-    padding-bottom: 20px;      para espaciar mas la parte seleccionada
- }
- COMENTO TODO LO ANTERIOR YA QUE APLICANDO EL MATERIALIZE NO ME HACE FALTA APLICARLE ESTILOS A LAS CLASES DE FROMULARIO*/
-
 .buttonAdd {
    margin: 20px 0 0 0;
-   /*para agregar margen*/
 }
 
 .historial {
-  /* margin: 20px 0 20px 220px;*/
-   /*para agregar margen*/
    text-align: center;
 }
 
 #botonDeEnvio {
-   /*los ID se ingresan por medio de "#"*/
+
    font-size: 23px;
 }
 
 #imageTitle {
    margin: 25px 500px 0 0;
-   /*para agregar margen*/
 }
 
 #title {
