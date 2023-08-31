@@ -2,7 +2,7 @@ td,
 th {
    text-align: center;
    padding: 10px;
-   border: solid red 1px;
+   border: solid steelblue 3px;
 }
 
 .TableFormat table {
